@@ -10,6 +10,7 @@ int main(int argc, char ** argv) {
 		"jerk runs two commands and connects their stdin and stdout in a cycle\n"
 		"Usage:\n"
 		"    jerk <command1> [arg1 ...] ; <command2> [arg1 ...]\n";
+
 	if (argc < 3) {
 		fprintf(stderr, usage);
 		return 1;
@@ -32,7 +33,7 @@ int main(int argc, char ** argv) {
 	c1argv = &nargv[1];
 	nargv[argc] = NULL;
 	if (c2argv == NULL) {
-		fprintf(stderr, "Separate commands with a ';'\nMake sure to escape it from your shell\n\n");
+		fprintf(stderr, "Separate commands with a ';'\nMake sure to escape it from your shell.\nSee usage for more information\n\n");
 		return 1;
 	}
 
