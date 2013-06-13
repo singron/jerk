@@ -48,7 +48,7 @@ int main(int argc, char ** argv) {
 	int c2toc1[2];
 
 	err = pipe(c1toc2);
-	if (err == -1) {
+	if (err) {
 		perror("pipe");
 		return 1;
 	}
@@ -167,6 +167,5 @@ int main(int argc, char ** argv) {
 			wait(0);
 		}
 	}
-
 	return 0;
 }
