@@ -19,19 +19,25 @@ int main(int argc, char ** argv) {
 	char ** nargv;
 	char ** c1argv = NULL;
 	char ** c2argv = NULL;
+	/* Copy arguments to new array so we can edit it */
 	int err;
 	nargv = malloc(sizeof(char **) * argc);
 	memcpy(nargv, argv, sizeof(char **) * argc + 1);
 	int i;
 	for (i = 0; i < argc; ++i) {
 		if (strcmp(nargv[i], ";") == 0) {
+			/* null so each call to execv knows where to stop reading */
 			nargv[i] = NULL;
 			if (c2argv == NULL && i + 1 != argc)
+				/* Prevent trailing semicolons from ruining things.
+				 * This also means arguments after a second semicolon are ignored */
 				c2argv = &nargv[i+1];
 		}
 	}
+
 	c1argv = &nargv[1];
 	nargv[argc] = NULL;
+
 	if (c2argv == NULL) {
 		fprintf(stderr, "Separate commands with a ';'\nMake sure to escape it from your shell.\nSee usage for more information\n\n");
 		return 1;
