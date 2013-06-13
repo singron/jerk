@@ -28,3 +28,8 @@ Examples
 	jerk cat jerk.c - \; tee big_file.c # write all the looped io to disk
 
 	jerk sed 's/\t/    /g' jerk.c \; sed 's/    /\t/g' # tabs vs. spaces
+
+License
+-------
+
+I licensed this under GPLv3 or later. See COPYING for details.
